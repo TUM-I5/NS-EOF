@@ -1,0 +1,38 @@
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "*.cpp")
+
+foreach(file ${SOURCES})
+  get_filename_component(filename ${file} NAME_WLE)
+  add_executable(${filename} ${file})
+  add_test(NAME ${filename} COMMAND ${filename})
+  target_link_libraries(${filename} PRIVATE ${NSEOF_PROJECT_NAME} Catch2 Catch2WithMain)
+endforeach()
+
+add_test(NAME Cavity2DTest
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} 1 $<TARGET_FILE:${NSEOF_PROJECT_NAME}-Runner> ${CMAKE_BINARY_DIR}/ExampleCases/Cavity2D.xml
+)
+
+add_test(NAME Cavity3DTest
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} 1 $<TARGET_FILE:${NSEOF_PROJECT_NAME}-Runner> ${CMAKE_BINARY_DIR}/ExampleCases/Cavity3D.xml
+)
+
+add_test(NAME Channel2DTest
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} 1 $<TARGET_FILE:${NSEOF_PROJECT_NAME}-Runner> ${CMAKE_BINARY_DIR}/ExampleCases/Channel2D.xml
+)
+
+add_test(NAME Channel3DTest
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} 1 $<TARGET_FILE:${NSEOF_PROJECT_NAME}-Runner> ${CMAKE_BINARY_DIR}/ExampleCases/Channel3D.xml
+)
+
+add_test(NAME ChannelBackwardFacingStep2DTest
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} 1 $<TARGET_FILE:${NSEOF_PROJECT_NAME}-Runner> ${CMAKE_BINARY_DIR}/ExampleCases/ChannelBackwardFacingStep2D.xml
+)
+
+add_test(NAME ChannelBackwardFacingStep3DTest
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} 1 $<TARGET_FILE:${NSEOF_PROJECT_NAME}-Runner> ${CMAKE_BINARY_DIR}/ExampleCases/ChannelBackwardFacingStep3D.xml
+)
