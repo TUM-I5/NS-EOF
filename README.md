@@ -45,9 +45,9 @@ As build system configurator we use CMake. To compile the code execute the follo
 ## Running a Simulation
 
 * Run the code in serial via `./NS-EOF-Runner path/to/your/configuration`
-  * Example: `./NS-EOF-Runner ExampleCases/Cavity2D.xml`
+  * Example: `./NS-EOF-Runner ../ExampleCases/Cavity2D.xml`
 * Run the code in parallel via `mpirun -np nproc ./NS-EOF-Runner path/to/your/configuration`
-  * Example: `mpirun -np 4 ./NS-EOF-Runner ExampleCases/Cavity2DParallel.xml`
+  * Example: `mpirun -np 4 ./NS-EOF-Runner ../ExampleCases/Cavity2DParallel.xml`
 
 ## Adding New Source Files
 
