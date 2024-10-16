@@ -8,6 +8,11 @@ If you do not have Linux installed on your computer, please use WSL, Virtual Mac
 
 ## Dependencies
 
+### Build Essentials
+
+On Ubuntu, start with the installation of all required build essentials:
+`apt install build-essential gcc g++ pkg-config`
+
 ### MPI (recommended OpenMPI)
 
 * Under Ubuntu you can simply run `apt install libopenmpi-dev` to install OpenMPI.
